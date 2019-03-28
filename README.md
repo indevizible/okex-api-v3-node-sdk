@@ -12,7 +12,8 @@
 	const authClient = new AuthenticatedClient(key,secret, passphrase);
 	const wss = new V3WebsocketClient();
 
-
+测试Demo：
+https://github.com/zisuting/okex-node-sdk-sample
 
 ### API指南
 **WebSocket**行情订阅和推送，交易推送API，对应的源码文件是

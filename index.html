@@ -72,7 +72,9 @@
 <span class="hljs-keyword">const</span> { AuthenticatedClient } = <span class="hljs-built_in">require</span>(‘@okfe/okex-node’);
 <span class="hljs-keyword">const</span> pClient = <span class="hljs-keyword">new</span> PublicClient();
 <span class="hljs-keyword">const</span> authClient = <span class="hljs-keyword">new</span> AuthenticatedClient(key,secret, passphrase);
-<span class="hljs-keyword">const</span> wss = <span class="hljs-keyword">new</span> V3WebsocketClient();</code></pre><h3 id="api-">API指南</h3>
+<span class="hljs-keyword">const</span> wss = <span class="hljs-keyword">new</span> V3WebsocketClient();</code></pre><p>测试Demo：
+				<a href="https://github.com/zisuting/okex-node-sdk-sample">https://github.com/zisuting/okex-node-sdk-sample</a></p>
+				<h3 id="api-">API指南</h3>
 				<p><strong>WebSocket</strong>行情订阅和推送，交易推送API，对应的源码文件是
 				<strong>WebsocketClient.js</strong></p>
 				<p>用法如：</p>

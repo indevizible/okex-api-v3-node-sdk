@@ -58,7 +58,7 @@
     "ws": "^6.1.4"
   },
   "devDependencies": {
-    "@types/node": "^12.0.0",
+    "@types/node": "^12.7.1",
     "@types/pako": "^1.0.0",
     "@types/ws": "^6.0.1",
     "ava": "1.0.0-beta.7",

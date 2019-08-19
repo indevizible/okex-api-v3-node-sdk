@@ -2,12 +2,15 @@
 
 import axios, { AxiosInstance } from 'axios';
 import * as querystring from 'querystring';
+import axiosRetry from 'axios-retry';
 
 export function PublicClient(
   apiUri = 'https://www.okex.com',
   timeout = 3000,
-  axiosConfig = {}
+  axiosConfig = {},
+  axiosRetryConfig = {}
 ): any {
+  axiosRetry(axios, axiosRetryConfig);
   const axiosInstance: AxiosInstance = axios.create({
     baseURL: apiUri,
     timeout,
@@ -19,12 +22,6 @@ export function PublicClient(
       .get(url, { params })
       .then((res: { readonly data: any }) => res.data)
       .catch(error => {
-        console.log(
-          error.response && error.response !== undefined
-            ? JSON.stringify(error.response.data)
-            : error
-        );
-        console.log(error.message ? error.message : `${url} error`);
         throw error;
       });
   }

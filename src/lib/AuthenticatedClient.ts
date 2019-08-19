@@ -3,6 +3,7 @@
 import axios, { AxiosInstance } from 'axios';
 import * as crypto from 'crypto';
 import * as querystring from 'querystring';
+import axiosRetry from 'axios-retry';
 
 export function AuthenticatedClient(
   key: string,
@@ -10,8 +11,10 @@ export function AuthenticatedClient(
   passphrase: string,
   apiUri = 'https://www.okex.com',
   timeout = 3000,
-  axiosConfig = {}
+  axiosConfig = {},
+  axiosRetryConfig = {}
 ): any {
+  axiosRetry(axios, axiosRetryConfig);
   const axiosInstance: AxiosInstance = axios.create({
     baseURL: apiUri,
     timeout,
@@ -57,12 +60,6 @@ export function AuthenticatedClient(
       .get(url, { params, headers: { ...getSignature('get', url) } })
       .then(res => res.data)
       .catch(error => {
-        console.log(
-          error.response && error.response !== undefined && error.response.data
-            ? JSON.stringify(error.response.data)
-            : error
-        );
-        console.log(error.message ? error.message : `${url} error`);
         throw error;
       });
   }
@@ -83,12 +80,6 @@ export function AuthenticatedClient(
       })
       .then(res => res.data)
       .catch(error => {
-        console.log(
-          error.response && error.response !== undefined && error.response.data
-            ? JSON.stringify(error.response.data)
-            : error
-        );
-        console.log(error.message ? error.message : `${url} error`);
         throw error;
       });
   }
@@ -109,12 +100,6 @@ export function AuthenticatedClient(
       })
       .then(res => res.data)
       .catch(error => {
-        console.log(
-          error.response && error.response !== undefined && error.response.data
-            ? JSON.stringify(error.response.data)
-            : error
-        );
-        console.log(error.message ? error.message : `${url} error`);
         throw error;
       });
   }
